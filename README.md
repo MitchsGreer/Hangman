@@ -2,6 +2,8 @@
 Hangman game implemented in C. Great to look over if you are trying to learn C as it has a wide array of library use and is not a complex game. This game has been developed in Linux and has not been tested in a windows envirenment.
 
 ## To Build Hangman
+You just need to clone the this repository into a directory and run the `mk` file. This will compile the code using the cc compiler.
+
 At the moment the files are located by moving up from the home directory. There are some preloaded stats in the `Resource` folder. if you would like to use those you'll need to change the file paths in the `resource.h` file. To do this all you need to do is:
 
 1. Open the `resource.h` file with any text editer
