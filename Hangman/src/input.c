@@ -1,8 +1,6 @@
-//can use this to retrive the guessers name, the word, and the word suppliers name
-//does not need anything to happen before we start
-//outputs a string that is read in
+#include "../Resources/input.h"
 //
-//can also use this for navagating the menu
+
 char * get_name(char * name, int size, char * message)
 {
     char temp[size];

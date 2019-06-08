@@ -1,5 +1,5 @@
-
-
+#include "../Resources/time.h"
+//
 
 int read_in_time(double * time)
 {
@@ -52,8 +52,9 @@ int store_time(double time)
     else
     {
         printf("Failed to open time to write\n");
+        return 0;
     }
-    
+    return 1;
 }
 
 time_t start_time(void)

@@ -1,6 +1,7 @@
 #include "../Resources/play.h"
+//
 
-int play(PLAYER board[100], double * time)
+int play(struct PLAYER board[100], double * time)
 {
     char word[MAX_SIZE] = {[0 ... MAX_SIZE-1] = '\0'}, guess, word_giver[MAX_SIZE], word_guesser[MAX_SIZE];
     char answer[MAX_SIZE] = {[0 ... MAX_SIZE-1] = '\0'}, guesses[26] = {[0 ... 25] = '\0'};
@@ -40,6 +41,7 @@ int play(PLAYER board[100], double * time)
         board[find_player(board, word_giver)].players_stumped++;
         board[find_player(board, word_giver)].games_played++;
         board[find_player(board, word_guesser)].games_played++;
+        return 1;
     }
     else                                            //guesser wins
     {
@@ -48,6 +50,7 @@ int play(PLAYER board[100], double * time)
         board[find_player(board, word_guesser)].words_guessed++;
         board[find_player(board, word_guesser)].games_played++;
         board[find_player(board, word_giver)].games_played++;
+        return 2;
     }
     
 }
@@ -62,7 +65,7 @@ int print_frame(int incorrect_guess_count, char * guesses, int round, int total_
     printf("Round: %d \n", round);
     print_word(word, total_correct_guesses);
     print_guesses(guesses);
-
+    return 1;
 }
 
 int print_guesses(char * guesses)
@@ -125,6 +128,7 @@ int print_frame_0(void)
     printf("|                  ---------------------                         |\n");
     printf("|                                                                |\n");
     printf("%c----------------------------------------------------------------/\n", 92);
+    return 1;
 }
 
 int print_frame_1(void)
@@ -145,6 +149,7 @@ int print_frame_1(void)
     printf("|                  ---------------------                         |\n");
     printf("|                                                                |\n");
     printf("%c----------------------------------------------------------------/\n", 92);
+    return 1;
 }
 
 int print_frame_2(void)
@@ -165,6 +170,7 @@ int print_frame_2(void)
     printf("|                  ---------------------                         |\n");
     printf("|                                                                |\n");
     printf("%c----------------------------------------------------------------/\n", 92);
+    return 1;
 }
 
 int print_frame_3(void)
@@ -185,6 +191,7 @@ int print_frame_3(void)
     printf("|                  ---------------------                         |\n");
     printf("|                                                                |\n");
     printf("%c----------------------------------------------------------------/\n", 92);
+    return 1;
 }
 
 int print_frame_4(void)
@@ -205,6 +212,7 @@ int print_frame_4(void)
     printf("|                  ---------------------                         |\n");
     printf("|                                                                |\n");
     printf("%c----------------------------------------------------------------/\n", 92);
+    return 1;
 }
 
 int print_frame_5(void)
@@ -225,6 +233,7 @@ int print_frame_5(void)
     printf("|                  ---------------------                         |\n");
     printf("|                                                                |\n");
     printf("%c----------------------------------------------------------------/\n", 92);
+    return 1;
 }
 
 int print_frame_6(void)
@@ -245,6 +254,7 @@ int print_frame_6(void)
     printf("|                  ---------------------                         |\n");
     printf("|                                                                |\n");
     printf("%c----------------------------------------------------------------/\n", 92);
+    return 1;
 }
 
 int print_frame_7(void)
@@ -265,6 +275,7 @@ int print_frame_7(void)
     printf("|                  ---------------------                         |\n");
     printf("|                                                                |\n");
     printf("%c----------------------------------------------------------------/\n", 92);
+    return 1;
 }
 
 int print_frame_8(void)
@@ -285,6 +296,7 @@ int print_frame_8(void)
     printf("|                  ---------------------                         |\n");
     printf("|                                                                |\n");
     printf("%c----------------------------------------------------------------/\n", 92);
+    return 1;
 }
 
 int print_frame_9(void)
@@ -305,6 +317,7 @@ int print_frame_9(void)
     printf("|                  ---------------------                         |\n");
     printf("|                                                                |\n");
     printf("%c----------------------------------------------------------------/\n", 92);
+    return 1;
 }
 
 int print_loss_frame(char * answer, char * guesser, char * word_giver)
@@ -315,8 +328,8 @@ int print_loss_frame(char * answer, char * guesser, char * word_giver)
     printf("|                                                                |\n");
     printf("|                           /---------%c                          |\n", 92);
     printf("|                           |         |                          |\n");
-    printf("|                           |         O                          |\n", 92);
-    printf("|                           |                                    |\n", 92);
+    printf("|                           |         O                          |\n");
+    printf("|                           |                                    |\n");
     printf("|                           |                                    |\n");
     printf("|                           |                                    |\n");
     printf("|                           |  %c        /                        |\n", 92);
@@ -332,6 +345,7 @@ int print_loss_frame(char * answer, char * guesser, char * word_giver)
     printf("%s beat %s \n", word_giver, guesser);
     scanf("%c", &throwaway);
     scanf("%c", &throwaway);
+    return 1;
 }
 
 int print_win_frame(char * answer, char * guesser, char * word_giver)
@@ -340,7 +354,7 @@ int print_win_frame(char * answer, char * guesser, char * word_giver)
 
     printf("/----------------------------------------------------------------%c\n", 92);
     printf("|                                                                |\n");
-    printf("|                                                                |\n", 92);
+    printf("|                                                                |\n");
     printf("|                                                                |\n");
     printf("|                            %c O /                               |\n", 92);
     printf("|                             %c|/                                |\n", 92);
@@ -359,4 +373,5 @@ int print_win_frame(char * answer, char * guesser, char * word_giver)
     printf("%s beat %s \n", guesser, word_giver);
     scanf("%c", &throwaway);
     scanf("%c", &throwaway);
+    return 1;
 }

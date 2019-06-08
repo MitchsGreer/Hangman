@@ -1,6 +1,5 @@
-#include "../Resources/resource.h"
-
-
+#include "../Resources/menu.h"
+//
 
 int main(int argc, char * argv[])
 {

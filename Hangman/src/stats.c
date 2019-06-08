@@ -1,4 +1,5 @@
-
+#include "../Resources/stats.h"
+//
 
 int read_in_stats(int * games_played)
 {
@@ -45,4 +46,5 @@ int store_stats(int games_played)
 int print_stats(int games_played)
 {
     printf("Games Played: %d\n", games_played);
+    return 1;
 }

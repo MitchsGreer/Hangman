@@ -1,4 +1,5 @@
-
+#include "../Resources/menu.h"
+//
 
 int print_menu(void)
 {
@@ -12,8 +13,8 @@ int print_menu(void)
 
 int navigate_menu(void)
 {
-    char option[MAX_SIZE] = {[0 ... MAX_SIZE-1] = '/0'};
-    PLAYER board[100] = {[0 ... 99] = {"", 0,0,0}};
+    char option[MAX_SIZE] = {[0 ... MAX_SIZE-1] = 0};
+    struct PLAYER board[100] = {[0 ... 99] = {"", 0,0,0}};
     int games_played = 0;
     double time = 0;
 

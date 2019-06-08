@@ -1,5 +1,14 @@
+#pragma once
+#ifndef PLAY_H
+#define PLAY_H
+#include "resource.h"
+#include "scoreboard.h"
+#include "time.h"
+#include "word.h"
+#include "input.h"
+//
 
-int play(PLAYER board[100], double * time);
+int play(struct PLAYER board[100], double * time);
 int print_frame(int incorrect_guess_count, char * guesses, int round, int total_correct_guesses, char * word);
 int print_guesses(char * guesses);
 int print_word(char * word, int size);
@@ -15,3 +24,4 @@ int print_frame_8(void);
 int print_frame_9(void);
 int print_loss_frame(char * answer, char * guesser, char * word_giver);
 int print_win_frame(char * answer, char * guesser, char * word_giver);
+#endif
