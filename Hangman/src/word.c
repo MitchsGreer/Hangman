@@ -1,4 +1,4 @@
-#include "../Resources/resource.h"
+#include "../Resources/word.h"
 //
 
 int check_guess(char * word, int size, char guess, char * answer)

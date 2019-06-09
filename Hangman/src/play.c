@@ -1,6 +1,20 @@
 #include "../Resources/play.h"
 //
 
+
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   play() An interface used to play the game from hangman.   *
+*                                                             *
+*   @param board The scoreboard of all people who have played *
+*                this game.                                   *
+*   @param time The total time taken playing this game.       *
+*                                                             *
+*   @return The number of the player who won the game,        *
+*           1 for the word giver and 2 for the guesser.       *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 int play(struct PLAYER board[100], double * time)
 {
     char word[MAX_SIZE] = {[0 ... MAX_SIZE-1] = '\0'}, guess, word_giver[MAX_SIZE], word_guesser[MAX_SIZE];
@@ -55,6 +69,23 @@ int play(struct PLAYER board[100], double * time)
     
 }
 
+
+
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   get_name() is an interface that reads in a name or word   *
+*   from the player.                                          *
+*                                                             *
+*   @param name The charactor array holding the name or word  *
+*               that inputed by the player.                   *
+*   @param size The size of the charactor array holding the   *
+*               name or read read in from the player.         *
+*   @param message The message to accompany the read from the *
+*               player.                                       *
+*   @return A pointer to the start of the charactor array.    *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */  
 int print_frame(int incorrect_guess_count, char * guesses, int round, int total_correct_guesses, char * word)
 {
     int (*fptr[])(void) = {(int (*)())print_frame_0,print_frame_1,print_frame_2,print_frame_3,

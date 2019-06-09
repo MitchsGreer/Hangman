@@ -9,6 +9,6 @@
 #include "input.h"
 //
 
-int print_menu(void);
+void print_menu(void);
 int navigate_menu(void);
 #endif

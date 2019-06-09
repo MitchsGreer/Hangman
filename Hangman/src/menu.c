@@ -1,16 +1,35 @@
 #include "../Resources/menu.h"
 //
 
-int print_menu(void)
+
+
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   print_menu() Displays the menu options for Hangman.       *
+*                                                             *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+void print_menu(void)
 {
     printf("----------Welcome to Hangman----------\n");
     printf("----------       Play       ----------\n");
     printf("----------    Score Board   ----------\n");
     printf("----------       Stats      ----------\n");
     printf("----------       Exit       ----------\n");
-    return 1;
 }
 
+
+
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   navigate_menu() Allows the user to select a menu option.  *
+*                                                             *
+*   @return An integer, returns 1 if the user does not exit.  *
+*           the game.                                         *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 int navigate_menu(void)
 {
     char option[MAX_SIZE] = {[0 ... MAX_SIZE-1] = 0};
