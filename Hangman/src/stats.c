@@ -1,6 +1,15 @@
-#include "../Resources/stats.h"
+#include "stats.h"
 //
 
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   read_in_stats() Reads in stats saved on disk.             *
+*                                                             *
+*   @param games_played Where to store the data grabbed       *
+*                       from disk                             *
+*                                                             *
+*   @return 1 if the file opened correctly, 0 otherwise.      *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 int read_in_stats(int * games_played)
 {
     FILE * input = NULL;
@@ -22,6 +31,14 @@ int read_in_stats(int * games_played)
     return 0;
 }
 
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   store_stats() Stores stats to disk.                       *
+*                                                             *
+*   @param games_played Stats to store to disk.               *
+*                                                             *
+*   @return 1 if the file opened correctly, 0 otherwise.      *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 int store_stats(int games_played)
 {
     FILE * output = NULL;
@@ -43,8 +60,13 @@ int store_stats(int games_played)
     return 0;   
 }
 
-int print_stats(int games_played)
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   print_stats() Prints stats to screen.                     *
+*                                                             *
+*   @param games_played Stats to print to screen.             *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+void print_stats(int games_played)
 {
     printf("Games Played: %d\n", games_played);
-    return 1;
 }

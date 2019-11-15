@@ -1,6 +1,15 @@
-#include "../Resources/scoreboard.h"
+#include "scoreboard.h"
 //
 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   myitoa() Converts a number to a string.                   *
+*                                                             *
+*   @param num Given number to transform to a string.         *
+*                                                             *
+*   @param buf Where the string will be stored.               *
+*                                                             *
+*   @return Address of the start of the string.               *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 char * myitoa(int num, char buf[])
 {  
     int k = 0;
@@ -22,6 +31,15 @@ char * myitoa(int num, char buf[])
     return buf;
 }
 
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   read_board_in() Reads the scoreboard from disk.           *
+*                                                             *
+*   @param board Scoreboard storing all players and           *
+*                their scores.                                *
+*                                                             *
+*   @return 1 if the file opened correctly, 0 otherwise.      *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 int read_board_in(struct PLAYER board[100])
 {
     int i = 0;
@@ -62,9 +80,18 @@ int read_board_in(struct PLAYER board[100])
 }
 
 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   print_board() Prints the scoreboard to the screen.        *
+*                                                             *
+*   @param board Scoreboard storing all players and           *
+*                their scores.                                *
+*                                                             *
+*   @return Number of players that have played before.        *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 int print_board(struct PLAYER board[100])
 {
     int i;
+    char c;
     printf("\n\n-----------------------  Score Board  ------------------------\n");
     printf("Name\t    | Stumped Players | Words Guessed | Games Played\n");
     printf("--------------------------------------------------------------\n");
@@ -76,13 +103,22 @@ int print_board(struct PLAYER board[100])
             printf("%s\t    |\t     %d        |       %d       |       %d\n", board[i].name, board[i].players_stumped, board[i].words_guessed, board[i].games_played);
         }
     }
-    scanf("%d", &i);
-    return 1;
+    scanf("%c", &c);
+    return i;
 }
 
+
 //bubble sort taken from https://www.geeksforgeeks.org/bubble-sort/ on may 16 2019 22:50
-//function was modified for the corect parameters
-int sort_board(struct PLAYER board[100])
+//function was modified for the correct parameters
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   sort_board() Sorts the score board.                       *
+*                                                             *
+*   @param board Scoreboard storing all players and           *
+*                their scores.                                *
+*                                                             *
+*   @return Number of players that have played before.        *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+void sort_board(struct PLAYER board[100])
 {
     int i, j; 
     double result_1 = 0, result_2 = 0;
@@ -105,9 +141,17 @@ int sort_board(struct PLAYER board[100])
             }
         }
     }
-    return 1;
 }
 
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   store_board() Writes the scoreboard to disk.              *
+*                                                             *
+*   @param board Scoreboard storing all players and           *
+*                their scores.                                *
+*                                                             *
+*   @return 1 if the file opened correctly, 0 otherwise.      *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 int store_board(struct PLAYER board[100])
 {
     int i = 0;
@@ -164,6 +208,19 @@ int store_board(struct PLAYER board[100])
     return i;
 }
 
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * \
+*   add_player() Adds a new player entry to the scoreboard.      *
+*                                                                *
+*   @param board Scoreboard storing all players and              *
+*                their scores.                                   *
+*                                                                *
+*   @param name Players name to be added to the scoreboard.      *
+*                                                                *
+*   @param index Index of the player on the board.               *
+*                                                                *
+*   @return Number of players that have played before.           *
+\ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 int add_player(struct PLAYER board[100], char * name, int index)
 {
     strcpy(board[index].name, name);
@@ -171,10 +228,22 @@ int add_player(struct PLAYER board[100], char * name, int index)
 }
 
 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   find_player() Finds the index of a player by their name in   *
+*                 the scoreboard.                                *
+*                                                                *
+*   @param board Scoreboard storing all players and              *
+*                their scores.                                   *
+*                                                                *
+*   @param name Players name to be added to the scoreboard.      *
+*                                                                *
+*   @return Index of the player on the scoreboard, -1 if         *
+*           not found.                                           *
+\ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 int find_player(struct PLAYER board[100], char * name)
 {
     int i;
-    for(i =0; board[i].name[0]!= '\0';i++)
+    for(i = 0; board[i].name[0] != '\0'; i++)
     {
         if(strcmp(board[i].name, name) == 0)
         {

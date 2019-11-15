@@ -1,8 +1,5 @@
-#include "../Resources/play.h"
+#include "play.h"
 //
-
-
-
 
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
@@ -70,10 +67,6 @@ int play(struct PLAYER board[100], double * time)
 }
 
 
-
-
-
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
 *   get_name() is an interface that reads in a name or word   *
 *   from the player.                                          *
@@ -88,7 +81,7 @@ int play(struct PLAYER board[100], double * time)
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */  
 int print_frame(int incorrect_guess_count, char * guesses, int round, int total_correct_guesses, char * word)
 {
-    int (*fptr[])(void) = {(int (*)())print_frame_0,print_frame_1,print_frame_2,print_frame_3,
+    void (*fptr[])(void) = {(void (*)())print_frame_0,print_frame_1,print_frame_2,print_frame_3,
                            print_frame_4,print_frame_5,print_frame_6,print_frame_7, 
                            print_frame_8,print_frame_9};
     
@@ -99,7 +92,14 @@ int print_frame(int incorrect_guess_count, char * guesses, int round, int total_
     return 1;
 }
 
-int print_guesses(char * guesses)
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   print_guesses() Prints all of the players guesses to      *
+*                   the screen.                               *
+*                                                             *
+*   @param guesses All the current guess the player has made. *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+void print_guesses(char * guesses)
 {
     int i = 0;
     printf("Guesses: %c", guesses[i]);
@@ -111,10 +111,16 @@ int print_guesses(char * guesses)
         }
     }
     putchar('\n');
-    return 1;
 }
 
-int print_word(char * word, int size)
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   print_word() Prints the word so far, filling in correct   *
+*                guesses the screen.                          *
+*                                                             *
+*   @param guesses All the current guess the player has made. *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+void print_word(char * word, int size)
 {
     int i = 0;
     if(word[i])
@@ -138,10 +144,14 @@ int print_word(char * word, int size)
         
     }
     putchar('\n');
-    return 1;
 }
 
-int print_frame_0(void)
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   print_frame_0() Prints the starting frame of Hangman.     *
+*                                                             *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+void print_frame_0(void)
 {
     printf("/----------------------------------------------------------------%c\n", 92);
     printf("|                                                                |\n");
@@ -159,38 +169,20 @@ int print_frame_0(void)
     printf("|                  ---------------------                         |\n");
     printf("|                                                                |\n");
     printf("%c----------------------------------------------------------------/\n", 92);
-    return 1;
 }
 
-int print_frame_1(void)
-{
-    printf("/----------------------------------------------------------------%c\n", 92);
-    printf("|                                                                |\n");
-    printf("|                           /---------%c                          |\n", 92);
-    printf("|                           |         |                          |\n");
-    printf("|                           |         O                          |\n");
-    printf("|                           |                                    |\n");
-    printf("|                           |                                    |\n");
-    printf("|                           |                                    |\n");
-    printf("|                           |                                    |\n");
-    printf("|                           |                                    |\n");
-    printf("|                           |                                    |\n");
-    printf("|                           |                                    |\n");
-    printf("|                           |                                    |\n");
-    printf("|                  ---------------------                         |\n");
-    printf("|                                                                |\n");
-    printf("%c----------------------------------------------------------------/\n", 92);
-    return 1;
-}
-
-int print_frame_2(void)
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   print_frame_1() Prints a frame of Hangman.                *
+*                                                             *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+void print_frame_1(void)
 {
     printf("/----------------------------------------------------------------%c\n", 92);
     printf("|                                                                |\n");
     printf("|                           /---------%c                          |\n", 92);
     printf("|                           |         |                          |\n");
     printf("|                           |         O                          |\n");
-    printf("|                           |         |                          |\n");
+    printf("|                           |                                    |\n");
     printf("|                           |                                    |\n");
     printf("|                           |                                    |\n");
     printf("|                           |                                    |\n");
@@ -201,10 +193,14 @@ int print_frame_2(void)
     printf("|                  ---------------------                         |\n");
     printf("|                                                                |\n");
     printf("%c----------------------------------------------------------------/\n", 92);
-    return 1;
 }
 
-int print_frame_3(void)
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   print_frame_2() Prints a frame of Hangman.                *
+*                                                             *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+void print_frame_2(void)
 {
     printf("/----------------------------------------------------------------%c\n", 92);
     printf("|                                                                |\n");
@@ -212,6 +208,31 @@ int print_frame_3(void)
     printf("|                           |         |                          |\n");
     printf("|                           |         O                          |\n");
     printf("|                           |         |                          |\n");
+    printf("|                           |                                    |\n");
+    printf("|                           |                                    |\n");
+    printf("|                           |                                    |\n");
+    printf("|                           |                                    |\n");
+    printf("|                           |                                    |\n");
+    printf("|                           |                                    |\n");
+    printf("|                           |                                    |\n");
+    printf("|                  ---------------------                         |\n");
+    printf("|                                                                |\n");
+    printf("%c----------------------------------------------------------------/\n", 92);
+}
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   print_frame_3() Prints a frame of Hangman.                *
+*                                                             *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+void print_frame_3(void)
+{
+    printf("/----------------------------------------------------------------%c\n", 92);
+    printf("|                                                                |\n");
+    printf("|                           /---------%c                          |\n", 92);
+    printf("|                           |         |                          |\n");
+    printf("|                           |         O                          |\n");
+    printf("|                           |         |                          |\n");
     printf("|                           |         |                          |\n");
     printf("|                           |         |                          |\n");
     printf("|                           |                                    |\n");
@@ -222,10 +243,14 @@ int print_frame_3(void)
     printf("|                  ---------------------                         |\n");
     printf("|                                                                |\n");
     printf("%c----------------------------------------------------------------/\n", 92);
-    return 1;
 }
 
-int print_frame_4(void)
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   print_frame_4() Prints a frame of Hangman.                *
+*                                                             *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+void print_frame_4(void)
 {
     printf("/----------------------------------------------------------------%c\n", 92);
     printf("|                                                                |\n");
@@ -243,10 +268,14 @@ int print_frame_4(void)
     printf("|                  ---------------------                         |\n");
     printf("|                                                                |\n");
     printf("%c----------------------------------------------------------------/\n", 92);
-    return 1;
 }
 
-int print_frame_5(void)
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   print_frame_5() Prints a frame of Hangman.                *
+*                                                             *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+void print_frame_5(void)
 {
     printf("/----------------------------------------------------------------%c\n", 92);
     printf("|                                                                |\n");
@@ -264,10 +293,14 @@ int print_frame_5(void)
     printf("|                  ---------------------                         |\n");
     printf("|                                                                |\n");
     printf("%c----------------------------------------------------------------/\n", 92);
-    return 1;
 }
 
-int print_frame_6(void)
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   print_frame_6() Prints a frame of Hangman.                *
+*                                                             *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+void print_frame_6(void)
 {
     printf("/----------------------------------------------------------------%c\n", 92);
     printf("|                                                                |\n");
@@ -285,10 +318,14 @@ int print_frame_6(void)
     printf("|                  ---------------------                         |\n");
     printf("|                                                                |\n");
     printf("%c----------------------------------------------------------------/\n", 92);
-    return 1;
 }
 
-int print_frame_7(void)
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   print_frame_7() Prints a frame of Hangman.                *
+*                                                             *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+void print_frame_7(void)
 {
     printf("/----------------------------------------------------------------%c\n", 92);
     printf("|                                                                |\n");
@@ -306,10 +343,14 @@ int print_frame_7(void)
     printf("|                  ---------------------                         |\n");
     printf("|                                                                |\n");
     printf("%c----------------------------------------------------------------/\n", 92);
-    return 1;
 }
 
-int print_frame_8(void)
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   print_frame_8() Prints a frame of Hangman.                *
+*                                                             *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+void print_frame_8(void)
 {
     printf("/----------------------------------------------------------------%c\n", 92);
     printf("|                                                                |\n");
@@ -327,10 +368,14 @@ int print_frame_8(void)
     printf("|                  ---------------------                         |\n");
     printf("|                                                                |\n");
     printf("%c----------------------------------------------------------------/\n", 92);
-    return 1;
 }
 
-int print_frame_9(void)
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   print_frame_9() Prints a frame of Hangman.                *
+*                                                             *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+void print_frame_9(void)
 {
     printf("/----------------------------------------------------------------%c\n", 92);
     printf("|                                                                |\n");
@@ -348,10 +393,15 @@ int print_frame_9(void)
     printf("|                  ---------------------                         |\n");
     printf("|                                                                |\n");
     printf("%c----------------------------------------------------------------/\n", 92);
-    return 1;
 }
 
-int print_loss_frame(char * answer, char * guesser, char * word_giver)
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   print_loss_frame() Prints the final frame of Hangman      *
+*                      is the guesser loses.                  *
+*                                                             *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+void print_loss_frame(char * answer, char * guesser, char * word_giver)
 {
     char throwaway;
 
@@ -376,10 +426,15 @@ int print_loss_frame(char * answer, char * guesser, char * word_giver)
     printf("%s beat %s \n", word_giver, guesser);
     scanf("%c", &throwaway);
     scanf("%c", &throwaway);
-    return 1;
 }
 
-int print_win_frame(char * answer, char * guesser, char * word_giver)
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   print_win_frame() Prints the final frame of Hangman      *
+*                      is the guesser wins.                  *
+*                                                             *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+void print_win_frame(char * answer, char * guesser, char * word_giver)
 {
     char throwaway;
 
@@ -404,5 +459,4 @@ int print_win_frame(char * answer, char * guesser, char * word_giver)
     printf("%s beat %s \n", guesser, word_giver);
     scanf("%c", &throwaway);
     scanf("%c", &throwaway);
-    return 1;
 }

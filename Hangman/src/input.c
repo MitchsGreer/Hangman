@@ -1,8 +1,5 @@
-#include "../Resources/input.h"
+#include "input.h"
 //
-
-
-
 
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
@@ -27,10 +24,6 @@ char * get_name(char * name, int size, char * message)
     strncpy(name, temp, size);
     return name;
 }
-
-
-
-
 
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\

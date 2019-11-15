@@ -1,9 +1,26 @@
-#include "../Resources/menu.h"
+#include "menu.h"
 //
 
 
-
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   init() is an interface that initializes the game.         *
+*                                                             *
+*   @param time The time played sofar in Hangman the game.    *
+*                                                             *
+*   @param board The scoreboard of all people who have played *
+*                this game.                                   *
+*                                                             *
+*   @param games_played Total games of Hangman played.        *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+void init(double *time, PLAYER board[100], int* games_played)
+{
+    read_in_time(time);
+    read_board_in(board); 
+    read_in_stats(games_played);
+    sort_board(board);
+    store_board(board);
+    store_time(*time);
+}
 
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
@@ -12,16 +29,12 @@
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 void print_menu(void)
 {
-    printf("----------Welcome to Hangman----------\n");
+    printf("\033[0;32m----------Welcome to Hangman----------\033[0m\n");
     printf("----------       Play       ----------\n");
     printf("----------    Score Board   ----------\n");
     printf("----------       Stats      ----------\n");
     printf("----------       Exit       ----------\n");
 }
-
-
-
-
 
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
@@ -37,12 +50,7 @@ int navigate_menu(void)
     int games_played = 0;
     double time = 0;
 
-    read_in_time(&time);
-    read_board_in(board); 
-    read_in_stats(&games_played);
-    sort_board(board);
-    store_board(board);
-    store_time(time);
+    init(&time, board, &games_played);
     print_menu();
     get_name(option, MAX_SIZE, "Please provide your option: ");
 
