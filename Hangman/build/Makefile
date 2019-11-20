@@ -5,6 +5,7 @@
 TARGET = Hangman #The desired name of the executable.
 CC = gcc #The compiler of choice. 
 CFLAGS = -c -Wall #Cflags for compilation, -Wall brings to light most c warnings.
+LIBRARIES = -pthread
 OBJ_DIR = $(BUILD_DIR)/../obj#Destination for the object files.
 SRC_DIR = $(BUILD_DIR)/../src
 BUILD_DIR = $(CURDIR)
@@ -17,6 +18,7 @@ SOURCE = play.o\
 		 stats.o\
 		 time.o\
 		 word.o\
+		 dictionary.o\
 		 main.o
 
 LOCATION = $(OBJ_DIR)/play.o\
@@ -26,6 +28,7 @@ LOCATION = $(OBJ_DIR)/play.o\
 		   $(OBJ_DIR)/stats.o\
 		   $(OBJ_DIR)/time.o\
 		   $(OBJ_DIR)/word.o\
+		   $(OBJ_DIR)/dictionary.o\
 		   $(OBJ_DIR)/main.o
 
 #Resource files for the the executable.
@@ -40,7 +43,7 @@ RESOURCE = $(SRC_DIR)/resource.h\
 
 #Rule for how the executable should be compiled.
 $(TARGET) : $(SOURCE) $(RESOURCE)
-	$(CC) $(LOCATION) -o $(TARGET)
+	$(CC) $(LIBRARIES) $(LOCATION) -o $(TARGET)
 
 OBJ_DIR : mkdir -p $(OBJ_DIR)
 
@@ -68,6 +71,9 @@ time.o : ../src/time.c $(SRC_DIR)/time.h
 
 word.o : ../src/word.c $(SRC_DIR)/word.h
 	$(CC) $(CFLAGS) ../src/word.c -o $(OBJ_DIR)/word.o
+	
+dictionary.o : ../src/dictionary.c $(SRC_DIR)/dictionary.h
+	$(CC) $(CFLAGS) ../src/dictionary.c -o $(OBJ_DIR)/dictionary.o
 
 #Stops this Makefile from interfering with files named clean
 .PHONY : clean
