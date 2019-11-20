@@ -24,6 +24,22 @@ void init(double *time, PLAYER board[100], int* games_played)
 
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+*   start() is an interface that starts the thrads            *
+*           for the game.                                     *
+*                                                             *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+void start(void)
+{
+    pthread_t dict_thread, game_thread;
+    pthread_create(&dict_thread, NULL, dict_init, (void *)&dictionary);
+    pthread_create(&game_thread, NULL, navigate_menu, NULL);
+
+    pthread_join(dict_thread, NULL);
+    pthread_join(game_thread, NULL);
+}
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
 *   print_menu() Displays the menu options for Hangman.       *
 *                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -43,37 +59,41 @@ void print_menu(void)
 *   @return An integer, returns 1 if the user does not exit.  *
 *           the game.                                         *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-int navigate_menu(void)
+void* navigate_menu(void* nothing)
 {
     char option[MAX_SIZE] = {[0 ... MAX_SIZE-1] = 0};
     struct PLAYER board[100] = {[0 ... 99] = {"", 0,0,0}};
     int games_played = 0;
     double time = 0;
 
-    init(&time, board, &games_played);
-    print_menu();
-    get_name(option, MAX_SIZE, "Please provide your option: ");
+    while(1)
+    {
+        system("clear");
+        print_menu();
+        init(&time, board, &games_played);
+        get_name(option, MAX_SIZE, "Please provide your option: ");
 
-    if(strcmp(option, "play") == 0 || strcmp(option, "Play") == 0)
-    {
-        play(board, &time);
-        games_played++;
-        store_board(board);
-        store_stats(games_played);
-        store_time(time);
+        if(strcmp(option, "play") == 0 || strcmp(option, "Play") == 0)
+        {
+            play(board, &time, &dictionary);
+            games_played++;
+            store_board(board);
+            store_stats(games_played);
+            store_time(time);
+        }
+        else if(strcmp(option, "score board") == 0 || strcmp(option, "Score board") == 0 || strcmp(option, "score Board") == 0 || strcmp(option, "Score Board") == 0)
+        {  
+            print_board(board); 
+        }
+        else if(strcmp(option, "stats") == 0 || strcmp(option, "Stats") == 0)
+        {
+            print_stats(games_played);
+            print_time(time, games_played);
+        }
+        else if(strcmp(option, "exit") == 0 || strcmp(option, "Exit") == 0)
+        {
+            exit(0);
+        }
     }
-    else if(strcmp(option, "score board") == 0 || strcmp(option, "Score board") == 0 || strcmp(option, "score Board") == 0 || strcmp(option, "Score Board") == 0)
-    {  
-        print_board(board); 
-    }
-    else if(strcmp(option, "stats") == 0 || strcmp(option, "Stats") == 0)
-    {
-        print_stats(games_played);
-        print_time(time, games_played);
-    }
-    else if(strcmp(option, "exit") == 0 || strcmp(option, "Exit") == 0)
-    {
-        exit(0);
-    }
-    return 1;
+    return NULL;
 }

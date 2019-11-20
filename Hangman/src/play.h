@@ -6,9 +6,11 @@
 #include "time.h"
 #include "word.h"
 #include "input.h"
+#include "dictionary.h"
 //
 
-int play(struct PLAYER board[100], double * time);
+//Functions
+int play(struct PLAYER board[100], double * time, DICT* dictionary);
 int print_frame(int incorrect_guess_count, char * guesses, int round, int total_correct_guesses, char * word);
 void print_guesses(char * guesses);
 void print_word(char * word, int size);

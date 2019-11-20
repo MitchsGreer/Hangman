@@ -1,0 +1,10 @@
+tom,0,1,1
+grant,0,1,2
+mitch,0,7,11
+meg,0,1,2
+clara,0,1,2
+ryan,0,2,5
+steve,0,0,1
+sam,0,1,2
+navdeep,0,0,1
+tess,0,0,1

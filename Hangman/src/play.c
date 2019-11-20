@@ -12,17 +12,43 @@
 *   @return The number of the player who won the game,        *
 *           1 for the word giver and 2 for the guesser.       *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-int play(struct PLAYER board[100], double * time)
+int play(struct PLAYER board[100], double * time, DICT* dictionary)
 {
     char word[MAX_SIZE] = {[0 ... MAX_SIZE-1] = '\0'}, guess, word_giver[MAX_SIZE], word_guesser[MAX_SIZE];
     char answer[MAX_SIZE] = {[0 ... MAX_SIZE-1] = '\0'}, guesses[26] = {[0 ... 25] = '\0'};
+    char in_dictionary[MAX_SIZE] = {[0 ... MAX_SIZE-1] = '\0'};
     int incorrect_guesses = 0, correct_guesses = 0, total_correct_guesses = 0, round_guesses = 0, round = 0;
     time_t my_time;
+    struct timespec sleep_time = {0, 5000000}, rem_time = {0,0};
 
     //we need the names and the word first
     get_name(word_giver, MAX_SIZE, "Who is providing the word: ");
     get_name(word_guesser, MAX_SIZE, "Who is guessing: ");
     get_name(answer, MAX_SIZE, "What is the word: ");
+
+    while(dictionary->loaded_in == 0)
+    {
+        //Loading screen for dictionary
+        printf("Waiting for dictionary to load |\r");
+        nanosleep(&sleep_time, &rem_time);
+        printf("Waiting for dictionary to load /\r");
+        nanosleep(&sleep_time, &rem_time);
+        printf("Waiting for dictionary to load -\r");
+        nanosleep(&sleep_time, &rem_time);
+        printf("Waiting for dictionary to load \\\r");
+        nanosleep(&sleep_time, &rem_time);
+    }
+
+    print_in_order_shell(dictionary);
+
+    if(find_word_shell(dictionary, answer, strlen(answer)) == 0)
+    {
+        get_name(in_dictionary, MAX_SIZE, "This word is not in the english language, do you want to continue: ");
+        if(strcmp(in_dictionary, "no") == 0 || strcmp(in_dictionary, "No") == 0)
+        {
+            return 2;
+        }
+    }
 
     //now that we have those, we can start guessing
     total_correct_guesses = strlen(answer);

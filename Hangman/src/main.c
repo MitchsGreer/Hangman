@@ -3,11 +3,6 @@
 
 int main(int argc, char * argv[])
 {
-    while(1)
-    {
-        system("clear");
-        navigate_menu();
-    }
-
+    start();
     return 1;
 }

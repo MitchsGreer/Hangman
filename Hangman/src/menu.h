@@ -9,9 +9,14 @@
 #include "input.h"
 //
 
+//Globals
+extern DICT dictionary;
+
+//Funtions
 void init(double *time, PLAYER board[100], int* games_played);
+void start(void);
 void print_menu(void);
-int navigate_menu(void);
+void* navigate_menu(void* nothing);
 
 #endif
 
