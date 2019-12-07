@@ -39,7 +39,7 @@ int play(struct PLAYER board[100], double * time, DICT* dictionary)
         nanosleep(&sleep_time, &rem_time);
     }
 
-    print_in_order_shell(dictionary);
+    //print_in_order_shell(dictionary);
 
     if(find_word_shell(dictionary, answer, strlen(answer)) == 0)
     {
@@ -179,21 +179,21 @@ void print_word(char * word, int size)
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 void print_frame_0(void)
 {
-    printf("/----------------------------------------------------------------%c\n", 92);
-    printf("|                                                                |\n");
-    printf("|                           /---------%c                          |\n", 92);
-    printf("|                           |         |                          |\n");
-    printf("|                           |                                    |\n");
-    printf("|                           |                                    |\n");
-    printf("|                           |                                    |\n");
-    printf("|                           |                                    |\n");
-    printf("|                           |                                    |\n");
-    printf("|                           |                                    |\n");
-    printf("|                           |                                    |\n");
-    printf("|                           |                                    |\n");
-    printf("|                           |                                    |\n");
-    printf("|                  ---------------------                         |\n");
-    printf("|                                                                |\n");
+    printf("\033[0;32m/----------------------------------------------------------------%c\033[0m\n", 92);
+    printf("\033[0;32m|\033[0m                                                                |\n");
+    printf("\033[0;32m|\033[0m                           /---------%c                          |\n", 92);
+    printf("\033[0;32m|\033[0m                           |         |                          |\n");
+    printf("\033[0;32m|\033[0m                           |                                    |\n");
+    printf("\033[0;32m|\033[0m                           |                                    |\n");
+    printf("\033[0;32m|\033[0m                           |                                    |\n");
+    printf("\033[0;32m|\033[0m                           |                                    |\n");
+    printf("\033[0;32m|\033[0m                           |                                    |\n");
+    printf("\033[0;32m|\033[0m                           |                                    |\n");
+    printf("\033[0;32m|\033[0m                           |                                    |\n");
+    printf("\033[0;32m|\033[0m                           |                                    |\n");
+    printf("\033[0;32m|\033[0m                           |                                    |\n");
+    printf("\033[0;32m|\033[0m                  ---------------------                         |\n");
+    printf("\033[0;32m|\033[0m                                                                |\n");
     printf("%c----------------------------------------------------------------/\n", 92);
 }
 
