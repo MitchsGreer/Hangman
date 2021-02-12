@@ -9,3 +9,4 @@ You just need to clone the this repository into a directory and run the `Makfile
 3. Run the `make` command in terminal
 
 The `Hangman` executable is now available to play! 
+w
