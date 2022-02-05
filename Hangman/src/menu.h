@@ -13,10 +13,10 @@
 extern DICT dictionary;
 
 //Funtions
-void init(double *time, PLAYER board[100], int* games_played);
+void init(double *time, PLAYER board[100], int *games_played);
 void start(void);
 void print_menu(void);
-void* navigate_menu(void* nothing);
+void *navigate_menu(void *nothing);
 
 #endif
 
@@ -36,4 +36,4 @@ void* navigate_menu(void* nothing);
 *   [0;36m	Cyan               *
 *   [1;36m	Bold Cyan          *
 *   [0m	Reset                  *
-\ * * * * * * * * * * * * * * */ 
+\ * * * * * * * * * * * * * * */

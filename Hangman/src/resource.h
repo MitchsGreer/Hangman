@@ -12,6 +12,7 @@
 #include <time.h>
 #include <pthread.h>
 #include <unistd.h>
+#include <ctype.h>
 
 //Deinfed constants
 #define MAX_SIZE 256
@@ -22,27 +23,30 @@
 #define DICTIONARY "../resources/words.txt"
 
 //How players are stored
-typedef struct PLAYER{
+typedef struct PLAYER
+{
     char name[MAX_SIZE];
     int words_guessed;
     int players_stumped;
     int games_played;
-}PLAYER;
+} PLAYER;
 
 //How words will be stored in the dictionary
-typedef struct WORD{
-    struct WORD* right_word;
-    struct WORD* left_word;
-    char* word;
+typedef struct WORD
+{
+    struct WORD *right_word;
+    struct WORD *left_word;
+    char *word;
     int word_size;
-}WORD;
+} WORD;
 
 //The dictionary
-typedef struct DICT{
-    struct WORD* start_word;
+typedef struct DICT
+{
+    struct WORD *start_word;
     char file[32];
     int num_words;
     int loaded_in;
-}DICT;
+} DICT;
 
 #endif
