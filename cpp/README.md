@@ -1,5 +1,5 @@
-Hangman in C
-============
+Hangman in C++
+==============
 This is hangman implemented in C++.
 
 Requirements
