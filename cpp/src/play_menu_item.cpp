@@ -4,9 +4,15 @@
 /// @brief Implementation for the play selection in the menu of Hangman.
 ///////////////////////////////////////////////////////////////////////////////
 #include "play_menu_item.hpp"
+#include "hangman.hpp"
 
+////////////////////////////////////////////////////////////////////////////////
+/// @brief The main entry point for playing the game of Hangman.
+///
+/// @return True if the game ended without error, False otherwise.
+////////////////////////////////////////////////////////////////////////////////
 bool PlayMenuItem::enter()
 {
-    /* TODO: create the play for Hangman. */
-    return true;
+    Hangman game;
+    return game.play();
 }

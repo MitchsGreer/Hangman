@@ -28,6 +28,7 @@ list(APPEND SOURCES src/play_menu_item.cpp)
 list(APPEND SOURCES src/stats_menu_item.cpp)
 list(APPEND SOURCES src/rules_menu_item.cpp)
 list(APPEND SOURCES src/score_board_menu_item.cpp)
+list(APPEND SOURCES src/hangman.cpp)
 
 # ------------------------------------------------------------------------------
 # Executable and files needed to make it.

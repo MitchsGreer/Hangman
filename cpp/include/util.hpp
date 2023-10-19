@@ -1,0 +1,27 @@
+///////////////////////////////////////////////////////////////////////////////
+/// @file util.cpp
+///
+/// @brief Utility templates for basic operations.
+///////////////////////////////////////////////////////////////////////////////
+#include <string>
+#include <iostream>
+
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief Get input from the user.
+///
+/// @tparam T The type of input to be gathered from the user.
+/// @param [in] prompt The prompt to print to the user before getting input.
+///
+/// @return The input gathered by the user.
+////////////////////////////////////////////////////////////////////////////////
+template <typename T>
+T get_input(std::string prompt)
+{
+    T input;
+
+    std::cout << prompt;
+    std::cin >> input;
+
+    return input;
+}
