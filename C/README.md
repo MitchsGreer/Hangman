@@ -5,7 +5,7 @@ This is hangman implemented in C.
 Requirements
 ------------
 - CMake
-- A C compiler
+- A C compiler (This was tested with gcc)
 
 Building
 --------

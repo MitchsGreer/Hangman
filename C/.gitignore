@@ -1,4 +1,5 @@
 # ==============================================================================
-# THis is the gitignore for the C implementation of Hangman.
+# This is the gitignore for the C implementation of Hangman.
 # ==============================================================================
-build/
+build
+*.log

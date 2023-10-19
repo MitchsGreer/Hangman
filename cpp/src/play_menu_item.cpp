@@ -1,0 +1,12 @@
+///////////////////////////////////////////////////////////////////////////////
+/// @file play_menu_item.cpp
+///
+/// @brief Implementation for the play selection in the menu of Hangman.
+///////////////////////////////////////////////////////////////////////////////
+#include "play_menu_item.hpp"
+
+bool PlayMenuItem::enter()
+{
+    /* TODO: create the play for Hangman. */
+    return true;
+}
