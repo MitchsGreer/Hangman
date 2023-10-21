@@ -16,6 +16,7 @@
 #include "stats.h"
 #include "input.h"
 #include "play.h"
+#include "util.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -79,7 +80,7 @@ void navigate_menu(void)
 
     while (1)
     {
-        system("clear");
+        clear_screen();
         print_menu();
         init(&time, board, &games_played);
         get_string(option, MAX_SIZE, MAIN_MENU_PROMPT);

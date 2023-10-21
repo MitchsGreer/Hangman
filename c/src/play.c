@@ -15,6 +15,7 @@
 #include "hang_time.h"
 #include "scoreboard.h"
 #include "guess.h"
+#include "util.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -64,7 +65,7 @@ player_t play(struct PLAYER board[SCOREBOARD_SIZE], double *time)
     // Start the game loop!
     while (incorrect_guesses < TOTAL_INCORRECT_GUESSES && correct_guesses < total_correct_guesses)
     {
-        system("clear");
+        clear_screen();
         round++;
         print_frame(incorrect_guesses, guesses, round, total_correct_guesses, word);
         do
@@ -86,7 +87,7 @@ player_t play(struct PLAYER board[SCOREBOARD_SIZE], double *time)
     *time += end_time(my_time);
     if (incorrect_guesses >= TOTAL_INCORRECT_GUESSES) //guesser loses
     {
-        system("clear");
+        clear_screen();
         print_loss_frame(answer, word_guesser, word_giver);
         board[find_player(board, word_giver)].players_stumped++;
         board[find_player(board, word_giver)].games_played++;
@@ -95,7 +96,7 @@ player_t play(struct PLAYER board[SCOREBOARD_SIZE], double *time)
     }
     else //guesser wins
     {
-        system("clear");
+        clear_screen();
         print_win_frame(answer, word_guesser, word_giver);
         board[find_player(board, word_guesser)].words_guessed++;
         board[find_player(board, word_guesser)].games_played++;

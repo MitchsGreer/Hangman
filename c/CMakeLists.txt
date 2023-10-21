@@ -26,6 +26,7 @@ list(APPEND SOURCES src/menu.c)
 list(APPEND SOURCES src/play.c)
 list(APPEND SOURCES src/scoreboard.c)
 list(APPEND SOURCES src/stats.c)
+list(APPEND SOURCES src/util.c)
 
 # ------------------------------------------------------------------------------
 # Executable and files needed to make it.
