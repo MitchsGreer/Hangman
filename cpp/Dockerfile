@@ -1,5 +1,5 @@
 # ==============================================================================
-# This dockerfile is for a c implementation of hangman.
+# This dockerfile is for a c++ implementation of hangman.
 # ==============================================================================
 FROM ubuntu:jammy-20231004
 
@@ -18,7 +18,7 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install --no-install-recommends -y \
         cmake \
-        gcc \
+        g++ \
         make \
         git \
         ca-certificates \
@@ -45,12 +45,13 @@ RUN git clone https://github.com/MitchsGreer/Hangman.git
 # ------------------------------------------------------------------------------
 # Move into the c implementation directory and build.
 # ------------------------------------------------------------------------------
-WORKDIR $HOMEDIR/Hangman/c
-RUN cmake -S . -B build -G "Unix Makefiles" && \
+WORKDIR $HOMEDIR/Hangman/cpp
+RUN git submodule update --init && \
+    cmake -S . -B build -G "Unix Makefiles" && \
     cd build && \
     make
 
-WORKDIR $HOMEDIR/Hangman/c/build
+WORKDIR $HOMEDIR/Hangman/cpp/build
 
 # ------------------------------------------------------------------------------
 # Make the new executable the entry point.

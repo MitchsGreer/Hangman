@@ -15,3 +15,11 @@ Run something like the following (building GNU Makefiles in this example):
 #> cd build
 #> make
 ```
+
+Running in Docker
+-----------------
+There is a dockerfile for this implementation to build and run:
+```
+#> docker build -t hangman_cpp .
+#> docker run -ti hangman_cpp
+```
