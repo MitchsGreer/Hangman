@@ -1,3 +1,0 @@
-[submodule "cpp/lib"]
-	path = cpp/lib
-	url = git@github.com:MitchsGreer/clib.git
